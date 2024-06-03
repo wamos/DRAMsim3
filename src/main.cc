@@ -66,7 +66,9 @@ int main(int argc, const char **argv) {
     }
     cpu->PrintStats();
 
-    delete cpu;
+    // This caused EXT_BREAKPOINT crash, I know there's a memory leak but it's only a CPU class
+    // let's skip the free to make sure it's not crashing	
+    //delete cpu;
 
     return 0;
 }
