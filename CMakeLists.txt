@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.5.0)
 project(dramsim3)
 
-set(default_build_type "Release")
+set(CMAKE_BUILD_TYPE Debug)
+#set(default_build_type "Release")
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
   set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE
@@ -10,6 +11,9 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
     "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O0")
 
 add_library(inih INTERFACE)
 target_include_directories(inih INTERFACE ext/headers)
